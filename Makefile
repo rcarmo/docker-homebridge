@@ -1,17 +1,19 @@
-IMAGE_NAME=rcarmo/homebridge
-HOSTNAME?=homebridge
-export ARCH?=$(shell arch)
-ifeq ($(ARCH),armhf)
+export IMAGE_NAME=rcarmo/homebridge
+ifneq (,$(findstring arm,$(ARCH)))
 export BASE=armv7/armhf-ubuntu:16.04
+export ARCH=armhf
 else
 export BASE=ubuntu:16.04
 endif
+export HOSTNAME?=homebridge
+export ARCH?=$(shell arch)
 export DATA_FOLDER=$(HOME)/.homebridge
 export VCS_REF=`git rev-parse --short HEAD`
 export VCS_URL=https://github.com/rcarmo/docker-homebridge-armhf
 export BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+
 build: Dockerfile
-	docker build -t $(IMAGE_NAME):$(ARCH)
+	docker build -t $(IMAGE_NAME):$(ARCH) .
 
 push:
 	docker push $(IMAGE_NAME)

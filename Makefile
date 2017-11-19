@@ -13,7 +13,11 @@ export VCS_URL=https://github.com/rcarmo/docker-homebridge-armhf
 export BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
 
 build: Dockerfile
-	docker build -t $(IMAGE_NAME):$(ARCH) .
+	docker build --build-arg BUILD_DATE=$(BUILD_DATE) \
+		--build-arg VCS_REF=$(VCS_REF) \
+		--build-arg VCS_URL=$(VCS_URL) \
+		--build-arg ARCH=$(ARCH) \
+		-t $(IMAGE_NAME):$(ARCH) .
 
 push:
 	docker push $(IMAGE_NAME)

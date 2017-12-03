@@ -25,21 +25,20 @@ RUN apt-get install \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD rootfs /
-VOLUME /home/user/.homebridge
 
-RUN adduser --disabled-password --gecos "" -u 1001 user \
- && chown -R user:user /home/user
-
+RUN adduser --disabled-password --gecos "" -u 1001 user
 USER user
-RUN npm install -g \
+RUN npm config set prefix=/home/user/.npm-packages \
+ && echo -e '\nexport PATH="/home/user/.npm-packages/bin:$PATH"' >> /home/user/.bashrc \
+ && npm install -g \
     bignum \
     homebridge \
     homebridge-meobox \
     homebridge-broadlink-rm \
     homebridge-server
 
-CMD ["homebridge"]
+VOLUME /home/user/.homebridge
+CMD /home/user/.npm-packages/bin/homebridge
 
 ARG VCS_REF
 ARG VCS_URL

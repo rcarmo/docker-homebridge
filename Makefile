@@ -41,6 +41,7 @@ test:
 daemon: network
 	-mkdir -p $(DATA_FOLDER)
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \
+		-v /var/run/dbus:/var/run/dbus \
 		--net=lan -h $(HOSTNAME) -d --restart unless-stopped $(IMAGE_NAME):$(ARCH)
 
 clean:

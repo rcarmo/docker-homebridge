@@ -2,31 +2,42 @@ ARG BASE
 FROM ${BASE}
 MAINTAINER Rui Carmo https://github.com/rcarmo
 
-# Update the system and set up the ReadyNAS repository
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install \
-    curl \
+#RUN apt-get update \
+# && apt-get dist-upgrade -y \
+# && i
+RUN apt-get update \
+ && apt-get install \
     apt-transport-https \
+    build-essential \
+    curl \
+    git \
     libavahi-compat-libdnssd-dev \
     wget \
     -y --force-yes  \
- && apt-get clean && rm -rf /var/lib/apt/lists/*
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
 RUN apt-get install \
-    git \
     nodejs \
     -y --force-yes \
- && npm install -g --unsafe-perm \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+ADD rootfs /
+VOLUME /home/user/.homebridge
+
+RUN adduser --disabled-password --gecos "" -u 1001 user \
+ && chown -R user:user /home/user
+
+USER user
+RUN npm install -g \
+    bignum \
     homebridge \
     homebridge-meobox \
     homebridge-broadlink-rm \
-    homebridge-server \
- && rm -rf /root/.npm
-
-RUN adduser --disabled-password --gecos "" -u 1001 user
-USER user
-VOLUME /home/user/.homebridge
+    homebridge-server
 
 CMD ["homebridge"]
 

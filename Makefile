@@ -38,11 +38,11 @@ test:
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \
 		--net=host -h $(HOSTNAME) $(IMAGE_NAME):$(ARCH)
 
-daemon: network
+daemon: 
 	-mkdir -p $(DATA_FOLDER)
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \
 		-v /var/run/dbus:/var/run/dbus \
-		--net=lan -h $(HOSTNAME) -d --restart unless-stopped $(IMAGE_NAME):$(ARCH)
+		--net=host -n $(HOSTNAME) -d --restart unless-stopped $(IMAGE_NAME):$(ARCH)
 
 clean:
 	-docker rm -v $$(docker ps -a -q -f status=exited)

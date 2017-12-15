@@ -35,8 +35,8 @@ RUN npm config set prefix=/home/user/.npm-packages \
     homebridge \
     homebridge-meobox \
     homebridge-broadlink-rm \
-    homebridge-hue \
-    homebridge-wemo \
+    homebridge-mqtt \
+    homebridge-mqtt-switch-tasmota \
     homebridge-server
 
 VOLUME /home/user/.homebridge

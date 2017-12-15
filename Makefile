@@ -42,7 +42,7 @@ daemon:
 	-mkdir -p $(DATA_FOLDER)
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \
 		-v /var/run/dbus:/var/run/dbus \
-		--net=host -n $(HOSTNAME) -d --restart unless-stopped $(IMAGE_NAME):$(ARCH)
+		--net=host --name $(HOSTNAME) -d --restart unless-stopped $(IMAGE_NAME):$(ARCH)
 
 clean:
 	-docker rm -v $$(docker ps -a -q -f status=exited)

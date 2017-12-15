@@ -35,6 +35,7 @@ RUN npm config set prefix=/home/user/.npm-packages \
     homebridge \
     homebridge-meobox \
     homebridge-broadlink-rm \
+    homebridge-wemo \
     homebridge-server
 
 VOLUME /home/user/.homebridge

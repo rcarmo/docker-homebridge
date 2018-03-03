@@ -11,6 +11,7 @@ export DATA_FOLDER=$(HOME)/.homebridge
 export VCS_REF=`git rev-parse --short HEAD`
 export VCS_URL=https://github.com/rcarmo/docker-homebridge
 export BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
+export TAG_DATE=`date -u +"%Y%m%d"`
 
 build: Dockerfile
 	docker build --build-arg BUILD_DATE=$(BUILD_DATE) \
@@ -19,6 +20,9 @@ build: Dockerfile
 		--build-arg ARCH=$(ARCH) \
 		--build-arg BASE=$(BASE) \
 		-t $(IMAGE_NAME):$(ARCH) .
+
+tag:
+	docker tag $(IMAGE_NAME):$(ARCH) $(IMAGE_NAME):$(ARCH)-$(TAG_DATE)
 
 push:
 	docker push $(IMAGE_NAME)

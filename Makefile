@@ -42,6 +42,12 @@ test:
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \
 		--net=host -h $(HOSTNAME) $(IMAGE_NAME):$(ARCH)
 
+logs:
+	docker logs -f $(HOSTNAME)
+
+truncate:
+	sudo truncate -s 0 $$(docker inspect --format='{{.LogPath}}' $(HOSTNAME))
+
 daemon: 
 	-mkdir -p $(DATA_FOLDER)
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \

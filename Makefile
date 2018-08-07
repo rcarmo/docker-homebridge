@@ -1,11 +1,15 @@
-export IMAGE_NAME=rcarmo/homebridge
 export ARCH?=$(shell arch)
-ifneq (,$(findstring arm,$(ARCH)))
-export BASE=armv7/armhf-ubuntu:16.04
-export ARCH=armhf
+ifneq (,$(findstring armv6,$(ARCH)))
+export BASE=arm32v6/ubuntu:18.04
+export ARCH=arm32v6
+else ifneq (,$(findstring armv7,$(ARCH)))
+export BASE=arm32v7/ubuntu:18.04
+export ARCH=arm32v7
 else
-export BASE=ubuntu:16.04
+export BASE=ubuntu:18.04
+export ARCH=amd64
 endif
+export IMAGE_NAME=rcarmo/homebridge
 export HOSTNAME?=homebridge
 export DATA_FOLDER=$(HOME)/.homebridge
 export VCS_REF=`git rev-parse --short HEAD`

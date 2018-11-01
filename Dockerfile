@@ -37,6 +37,7 @@ RUN npm config set prefix=/home/user/.npm-packages \
     homebridge-broadlink-rm \
     homebridge-mqtt \
     homebridge-mqtt-switch-tasmota \
+    homebridge-webos-tv \
     homebridge-server
 
 VOLUME /home/user/.homebridge

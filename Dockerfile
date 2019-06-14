@@ -41,7 +41,7 @@ RUN npm config set prefix=/home/user/.npm-packages \
     homebridge-config-ui-x
 
 VOLUME /home/user/.homebridge
-CMD /home/user/.npm-packages/bin/homebridge
+CMD /home/user/.npm-packages/bin/homebridge -I
 
 ARG VCS_REF
 ARG VCS_URL

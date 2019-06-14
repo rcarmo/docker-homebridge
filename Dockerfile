@@ -38,7 +38,8 @@ RUN npm config set prefix=/home/user/.npm-packages \
     homebridge-mqtt \
     homebridge-mqtt-switch-tasmota \
     homebridge-webos-tv \
-    homebridge-server
+    homebridge-server \
+    homebridge-config-ui-x
 
 VOLUME /home/user/.homebridge
 CMD /home/user/.npm-packages/bin/homebridge

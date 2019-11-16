@@ -35,7 +35,7 @@ RUN npm config set prefix=/home/user/.npm-packages \
  && npm install -g
 
 VOLUME /home/user/.homebridge
-CMD /home/user/.npm-packages/bin/homebridge -I
+CMD /home/user/node_modules/homebridge/bin/homebridge -I
 
 ARG VCS_REF
 ARG VCS_URL

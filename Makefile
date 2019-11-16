@@ -42,7 +42,7 @@ network:
 	lan
 
 shell:
-	docker run --net=lan -h $(HOSTNAME) -it $(IMAGE_NAME):$(ARCH) /bin/sh
+	docker run --net=host -h $(HOSTNAME) -it $(IMAGE_NAME):$(ARCH) /bin/sh
 
 test: 
 	docker run -v $(DATA_FOLDER):/home/user/.homebridge \

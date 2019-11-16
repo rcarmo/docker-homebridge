@@ -31,7 +31,7 @@ tag:
 	docker tag $(IMAGE_NAME):$(ARCH) $(IMAGE_NAME):$(ARCH)-$(TAG_DATE)
 
 push:
-	docker push $(IMAGE_NAME)
+	until docker push $(IMAGE_NAME); do echo "Retrying..."; sleep 2; done
 
 network:
 	-docker network create -d macvlan \

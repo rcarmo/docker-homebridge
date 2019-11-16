@@ -1,6 +1,6 @@
 ARG BASE 
 FROM ${BASE}
-MAINTAINER Rui Carmo https://github.com/rcarmo
+MAINTAINER Rui Carmo https://github.com/rcarmo/docker-homebridge
 
 #RUN apt-get update \
 # && apt-get dist-upgrade -y \
@@ -28,17 +28,11 @@ RUN apt-get install \
 
 RUN adduser --disabled-password --gecos "" -u 1001 user
 USER user
+ADD package.json /home/user/package.json
 RUN npm config set prefix=/home/user/.npm-packages \
  && echo -e '\nexport PATH="/home/user/.npm-packages/bin:$PATH"' >> /home/user/.bashrc \
- && npm install -g \
-    bignum \
-    homebridge \
-    homebridge-meobox \
-    homebridge-broadlink-rm \
-    homebridge-mqtt \
-    homebridge-mqtt-switch-tasmota \
-    homebridge-webos-tv \
-    homebridge-config-ui-x
+ && cd /home/user \
+ && npm install -g
 
 VOLUME /home/user/.homebridge
 CMD /home/user/.npm-packages/bin/homebridge -I

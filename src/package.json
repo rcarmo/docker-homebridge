@@ -1,0 +1,27 @@
+{
+    "name": "homebridge-deployment",
+    "description": "A Homebridge setup with the plugins I need, for armhf and x86_64",
+    "version": "1.0.0",
+    "main": "index.js",
+    "dependencies": {
+        "bignum": "0.13.0",
+        "homebridge": "0.4.50",
+        "homebridge-config-ui-x": "4.6.3",
+        "homebridge-meobox": "1.1.2",
+        "homebridge-mqtt": "0.5.2",
+        "homebridge-mqtt-switch-tasmota":"0.9.9",
+        "homebridge-broadlink-rm":"3.5.5",
+        "homebridge-webos-tv":"1.6.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rcarmo/docker-homebridge"    
+    },
+    "keywords": [],
+    "author": "Rui Carmo",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/rcarmo/docker-homebridge"
+    },
+    "homepage": "https://github.com/rcarmo/docker-homebridge"
+}

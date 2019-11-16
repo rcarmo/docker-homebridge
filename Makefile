@@ -17,13 +17,15 @@ export VCS_URL=https://github.com/rcarmo/docker-homebridge
 export BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"`
 export TAG_DATE=`date -u +"%Y%m%d"`
 
-build: Dockerfile
+.PHONY: build tag push 
+
+build:
 	docker build --build-arg BUILD_DATE=$(BUILD_DATE) \
 		--build-arg VCS_REF=$(VCS_REF) \
 		--build-arg VCS_URL=$(VCS_URL) \
 		--build-arg ARCH=$(ARCH) \
 		--build-arg BASE=$(BASE) \
-		-t $(IMAGE_NAME):$(ARCH) .
+		-t $(IMAGE_NAME):$(ARCH) src
 
 tag:
 	docker tag $(IMAGE_NAME):$(ARCH) $(IMAGE_NAME):$(ARCH)-$(TAG_DATE)

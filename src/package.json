@@ -9,6 +9,7 @@
         "homebridge-config-ui-x": "4.6.3",
         "homebridge-meobox": "1.1.2",
         "homebridge-mqtt": "0.5.2",
+        "homebridge-mqttthing": "1.0.45",
         "homebridge-mqtt-switch-tasmota":"0.9.9",
         "homebridge-broadlink-rm":"3.5.5",
         "homebridge-webos-tv":"1.6.2"

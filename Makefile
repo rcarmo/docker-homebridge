@@ -20,6 +20,7 @@ export TAG_DATE=`date -u +"%Y%m%d"`
 .PHONY: build tag push 
 
 build:
+	docker pull $(BASE)
 	docker build --build-arg BUILD_DATE=$(BUILD_DATE) \
 		--build-arg VCS_REF=$(VCS_REF) \
 		--build-arg VCS_URL=$(VCS_URL) \

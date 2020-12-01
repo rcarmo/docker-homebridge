@@ -5,14 +5,14 @@
     "main": "index.js",
     "dependencies": {
         "bignum": "0.13.1",
-        "homebridge": "0.4.50",
-        "homebridge-config-ui-x": "4.9.0",
-        "homebridge-meobox": "1.1.2",
+        "homebridge": "1.1.6",
+        "homebridge-config-ui-x": "4.35.0",
+        "homebridge-meobox-idempotent": "1.1.9",
         "homebridge-mqtt": "0.6.2",
-        "homebridge-mqttthing": "1.0.45",
+        "homebridge-mqttthing": "1.1.22",
         "homebridge-mqtt-switch-tasmota":"0.9.9",
         "homebridge-broadlink-rm":"3.6.22",
-        "homebridge-webos-tv":"1.6.3"
+        "homebridge-webos-tv":"2.0.7"
     },
     "repository": {
         "type": "git",
